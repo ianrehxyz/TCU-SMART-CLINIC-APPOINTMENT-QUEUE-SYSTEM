@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -390,63 +389,7 @@
                 right: 5%;
                 font-size: 75px;
             }
-        
-
-/* NAVIGATION */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 32px;
-}
-
-.navbar button {
-    appearance: none;
-    -webkit-appearance: none;
-    background: transparent !important;
-    color: white !important;
-    border: none !important;
-    border-bottom: 3px solid transparent !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    outline: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 0;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.navbar button:hover {
-    color: #ffe0e0 !important;
-    border-bottom: 3px solid white !important;
-}
-
-@media (max-width: 1000px) {
-    .header {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    .navbar {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 22px;
-    }
-}
-
-@media (max-width: 600px) {
-    .navbar {
-        gap: 16px;
-    }
-
-    .navbar button {
-        font-size: 13px;
-    }
-}
-}
-
+        }
     </style>
 </head>
 
@@ -457,7 +400,6 @@
 
         <div class="logo-section">
 
-            <!-- Keep TCU_logo_2024.png in the same folder as this HTML file -->
             <img
                 src="tcu.png"
                 alt="Taguig City University Logo"
@@ -475,20 +417,13 @@
 
         </div>
 
-       
-
-
-<nav class="navbar">
-    <a href="website.html">Home</a>
-    <a href="about us.html">About Us</a>
-    <a href="services.html">Clinic Services</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="faqs.html">FAQs</a>
-</nav>
-
-
-
-        
+        <nav class="navbar">
+            <a href="website.html">Home</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="services.html">Clinic Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="faqs.html">FAQs</a>
+        </nav>
 
     </header>
 
@@ -603,50 +538,42 @@
 
     </main>
 
-    
+    <footer id="tcu-footer">
+        <p>© 2026 TCU Smart Clinic Appointment &amp; Queue System</p>
+        <p>Making campus healthcare more convenient for TCU Community.</p>
+    </footer>
 
-<footer id="tcu-footer">
-    <p>© 2026 TCU Smart Clinic Appointment &amp; Queue System</p>
-    <p>Making campus healthcare more convenient for TCU Community.</p>
-</footer>
-
-<style>
-    #tcu-footer {
-        width: 100%;
-        min-height: 125px;
-        background-color: #bd191d;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 12px;
-        padding: 25px 15px;
-        box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    #tcu-footer p {
-        color: white;
-        margin: 0;
-        padding: 0;
-        font-size: 14px;
-        line-height: 1.5;
-    }
-
-    @media (max-width: 600px) {
-        #tcu-footer p {
-            font-size: 12px;
+    <style>
+        #tcu-footer {
+            width: 100%;
+            min-height: 125px;
+            background-color: #bd191d;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            padding: 25px 15px;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
-    }
-</style>
-</body>
-</html>
 
- 
+        #tcu-footer p {
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
 
-
+        @media (max-width: 600px) {
+            #tcu-footer p {
+                font-size: 12px;
+            }
+        }
+    </style>
 
 </body>
 </html>
