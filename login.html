@@ -1,0 +1,760 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | TCU Smart Clinic</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(
+                135deg,
+                #fff1f1,
+                #f5c4c7,
+                #e98d93
+            );
+            display: flex;
+            flex-direction: column;
+            color: #260808;
+        }
+
+        /* Background Decorations */
+        .decoration {
+            position: fixed;
+            color: rgba(181, 18, 27, 0.12);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .cross-one {
+            top: 130px;
+            left: 8%;
+            font-size: 120px;
+        }
+
+        .cross-two {
+            right: 8%;
+            bottom: 100px;
+            font-size: 140px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #a80f18, #c91f2a);
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(100, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: white;
+            color: #b5121b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .brand h2 {
+            font-size: 19px;
+            letter-spacing: 0.4px;
+        }
+
+        .brand p {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: 1px solid rgba(255,255,255,0.65);
+            padding: 11px 17px;
+            border-radius: 9px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            background: white;
+            color: #b5121b;
+        }
+
+        /* Main Layout */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 45px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-container {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 55px rgba(111, 10, 20, 0.18);
+        }
+
+        /* Left Panel */
+        .welcome-panel {
+            background: linear-gradient(
+                150deg,
+                #a80f18,
+                #d52e3b 75%,
+                #e64a55
+            );
+            color: white;
+            padding: 45px 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-panel::after {
+            content: "";
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            border: 40px solid rgba(255,255,255,0.07);
+            border-radius: 50%;
+            bottom: -120px;
+            right: -100px;
+        }
+
+        .welcome-symbol {
+            width: 75px;
+            height: 75px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin-bottom: 28px;
+        }
+
+        .welcome-panel h1 {
+            font-size: 34px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .welcome-panel > p {
+            color: #fff0f0;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .benefits {
+            margin-top: 30px;
+            list-style: none;
+        }
+
+        .benefits li {
+            margin: 18px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .check {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            border-radius: 50%;
+            background: white;
+            color: #b5121b;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Login Form */
+        .form-panel {
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-panel h2 {
+            font-size: 30px;
+            color: #8f1118;
+            margin-bottom: 10px;
+        }
+
+        .form-description {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #351313;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e3caca;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            background: #fffafa;
+            transition: 0.25s;
+        }
+
+        input:focus {
+            border-color: #c21c29;
+            box-shadow: 0 0 0 3px rgba(194, 28, 41, 0.1);
+            background: white;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        .password-wrap {
+            position: relative;
+        }
+
+        .password-wrap input {
+            padding-right: 75px;
+        }
+
+        .show-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #b5121b;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 0 0 24px;
+            font-size: 12px;
+        }
+
+        .remember-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .remember-label input {
+            width: auto;
+            accent-color: #b5121b;
+        }
+
+        .forgot-link {
+            color: #b5121b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 11px;
+            color: white;
+            background: linear-gradient(90deg, #b5121b, #df3544);
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(181, 18, 27, 0.2);
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(90deg, #8f1118, #b5121b);
+            transform: translateY(-2px);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        #loginMessage {
+            display: none;
+            margin-top: 16px;
+            padding: 12px;
+            border-radius: 9px;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+
+        #loginMessage.error {
+            display: block;
+            background: #fff0f0;
+            color: #a5101b;
+            border: 1px solid #f0c2c2;
+        }
+
+        #loginMessage.success {
+            display: block;
+            background: #e8f7ec;
+            color: #17652d;
+            border: 1px solid #b7e4c2;
+        }
+
+        .signup-prompt {
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+            margin-top: 25px;
+        }
+
+        .signup-prompt a {
+            color: #b5121b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .signup-prompt a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 18px;
+            color: #6d252a;
+            font-size: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 750px) {
+            .login-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .welcome-panel {
+                padding: 30px;
+            }
+
+            .welcome-symbol {
+                margin-bottom: 16px;
+            }
+
+            .benefits {
+                margin-top: 15px;
+            }
+
+            .benefits li {
+                margin: 11px 0;
+            }
+
+            .form-panel {
+                padding: 32px 25px;
+            }
+
+            header {
+                padding: 15px 5%;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .brand h2 {
+                font-size: 15px;
+            }
+
+            .brand p {
+                font-size: 10px;
+            }
+
+            .brand-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .back-link {
+                padding: 9px;
+                font-size: 12px;
+            }
+
+            .login-options {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="decoration cross-one">+</div>
+    <div class="decoration cross-two">+</div>
+
+    <!-- Header -->
+    <header>
+        <div class="brand">
+            <div class="brand-icon">✚</div>
+            <div>
+                <h2>TCU SMART CLINIC</h2>
+                <p>APPOINTMENT &amp; QUEUE SYSTEM</p>
+            </div>
+        </div>
+
+        <a href="website.html" class="back-link">
+            ← Back to Home
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="login-container">
+
+            <!-- Welcome Panel -->
+            <section class="welcome-panel">
+                <div class="welcome-symbol">✚</div>
+
+                <h1>Welcome<br>Back!</h1>
+
+                <p>
+                    Log in to your TCU Smart Clinic account to access
+                    clinic services, manage appointments, and monitor
+                    your queue.
+                </p>
+
+                <ul class="benefits">
+                    <li>
+                        <span class="check">✓</span>
+                        Manage Your Appointments
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Monitor Your Queue
+                    </li>
+                    <li>
+                        <span class="check">✓</span>
+                        Access Clinic Information
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Login Form -->
+            <section class="form-panel">
+                <h2>Log In</h2>
+
+                <p class="form-description">
+                    Enter your account details to continue.
+                </p>
+
+                <form id="loginForm">
+
+                    
+<div class="form-group">
+    <label for="loginEmail">Email Address</label>
+    <input
+        type="email"
+        id="loginEmail"
+        placeholder="Enter your registered email"
+        autocomplete="username"
+        required
+    >
+</div>
+
+<div class="form-group">
+    <label for="loginStudentId">Student ID</label>
+    <input
+        type="text"
+        id="loginStudentId"
+        placeholder="Enter your student ID"
+        required
+    >
+</div>
+
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+
+                        <div class="password-wrap">
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="show-password"
+                                id="togglePassword"
+                            >
+                                SHOW
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="login-options">
+                        <label class="remember-label">
+                            <input type="checkbox" id="rememberMe">
+                            Remember me
+                        </label>
+
+                        <a href="#" class="forgot-link" id="forgotPassword">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="login-btn" id="loginBtn">
+                        LOG IN
+                    </button>
+
+                    <div id="loginMessage" role="status"
+                         aria-live="polite"></div>
+
+                    <p class="signup-prompt">
+                        Don't have an account?
+                        <a href="signup.html">Sign Up</a>
+                    </p>
+
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 TCU Smart Clinic Appointment &amp; Queue System.
+        All rights reserved.
+    </footer>
+
+  
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    setPersistence,
+    browserLocalPersistence,
+    browserSessionPersistence,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDxijMAruXZOB1E-ZyAr69ZqBJJ1HqgcKM",
+    authDomain: "tcu-smart-clinic.firebaseapp.com",
+    projectId: "tcu-smart-clinic",
+    storageBucket: "tcu-smart-clinic.firebasestorage.app",
+    messagingSenderId: "702594747976",
+    appId: "1:702594747976:web:10771e4ce955031ee8d27d",
+    measurementId: "G-GQJN5CEPTC"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const loginForm = document.getElementById("loginForm");
+const loginMessage =
+    document.getElementById("loginMessage") ||
+    document.getElementById("message");
+
+const loginBtn = document.getElementById("loginBtn");
+
+const studentIdInput =
+    document.getElementById("loginStudentId") ||
+    document.getElementById("studentId");
+
+const emailInput =
+    document.getElementById("loginEmail") ||
+    document.getElementById("email");
+
+const passwordInput =
+    document.getElementById("loginPassword") ||
+    document.getElementById("password");
+
+const rememberMe = document.getElementById("rememberMe");
+
+function showMessage(message, type) {
+    loginMessage.textContent = message;
+    loginMessage.className = type;
+}
+
+loginForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const studentNumber = studentIdInput.value.trim();
+    const email = emailInput.value.trim().toLowerCase();
+    const password = passwordInput.value;
+
+    if (!studentNumber || !email || !password) {
+        showMessage(
+            "Enter your Student ID, email, and password.",
+            "error"
+        );
+        return;
+    }
+
+    loginBtn.disabled = true;
+    loginBtn.textContent = "VERIFYING...";
+    loginMessage.textContent = "";
+    loginMessage.className = "";
+
+    try {
+        await setPersistence(
+            auth,
+            rememberMe && rememberMe.checked
+                ? browserLocalPersistence
+                : browserSessionPersistence
+        );
+
+        // Authenticate using the real email and password.
+        const credential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        const user = credential.user;
+
+        // Read the profile saved during sign-up.
+        const profileRef = doc(db, "users", user.uid);
+        const profileSnapshot = await getDoc(profileRef);
+
+        if (!profileSnapshot.exists()) {
+            await signOut(auth);
+
+            showMessage(
+                "Your student profile was not found. Please contact your project administrator.",
+                "error"
+            );
+            return;
+        }
+
+        const profile = profileSnapshot.data();
+
+        // Verify the entered Student ID.
+        if (
+            String(profile.studentNumber).trim().toLowerCase() !==
+            studentNumber.toLowerCase()
+        ) {
+            await signOut(auth);
+
+            showMessage(
+                "Your Student ID does not match this email account.",
+                "error"
+            );
+            return;
+        }
+
+       showMessage(
+    "Login successful! Opening your appointment form...",
+    "success"
+);
+
+window.location.replace("registration.html");
+
+    } catch (error) {
+        console.error("Login error:", error);
+
+        if (
+            error.code === "auth/invalid-credential" ||
+            error.code === "auth/user-not-found" ||
+            error.code === "auth/wrong-password"
+        ) {
+            showMessage(
+                "Incorrect email or password. Check your details or create a new account.",
+                "error"
+            );
+        } else if (error.code === "auth/too-many-requests") {
+            showMessage(
+                "Too many attempts. Please wait and try again.",
+                "error"
+            );
+        } else {
+            showMessage(
+                "Login failed: " + error.message,
+                "error"
+            );
+        }
+    } finally {
+        loginBtn.disabled = false;
+        loginBtn.textContent = "LOG IN";
+    }
+});
+</script>
+
+
+</body>
+</html>

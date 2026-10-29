@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCU Smart Clinic Appointment & Queue System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f7b5b7;
+            color: #171010;
+        }
+
+        /* HEADER */
+        .header {
+            width: 100%;
+            min-height: 110px;
+            background: #bd191d;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 4%;
+            gap: 25px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .university-logo {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+        }
+
+        .logo-divider {
+            width: 2px;
+            height: 70px;
+            background: white;
+        }
+
+        .medical-logo {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+        }
+
+        .medical-logo::before,
+        .medical-logo::after {
+            content: "";
+            position: absolute;
+            background: #ffe0e0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px #7e1010;
+        }
+
+        .medical-logo::before {
+            width: 18px;
+            height: 45px;
+            left: 13px;
+            top: 0;
+        }
+
+        .medical-logo::after {
+            width: 45px;
+            height: 18px;
+            left: 0;
+            top: 13px;
+        }
+
+        .system-name h2 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .system-name p {
+            color: white;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 0;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            border-bottom-color: white;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 720px;
+            position: relative;
+            overflow: hidden;
+            padding: 85px 4% 110px;
+            background: linear-gradient(
+                115deg,
+                #f5c4c5 0%,
+                #ed9c9f 55%,
+                #e58287 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 950px;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: #df9294;
+            color: #641313;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 4.5vw, 76px);
+            line-height: 1.15;
+            font-weight: 800;
+            margin-bottom: 32px;
+            max-width: 1000px;
+        }
+
+        .hero h1 span {
+            color: #ce1027;
+        }
+
+        .hero-description {
+            max-width: 800px;
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        /* BUTTONS */
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 42px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 19px 30px;
+            border: 2px solid #a9191d;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f17a7c, #e83f48);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #fff0f0;
+            color: #a7191d;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px #a7191d30;
+        }
+
+        /* BENEFITS */
+        .benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        .check {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #d51e26;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* DECORATIVE MEDICAL SYMBOLS */
+        .plus {
+            position: absolute;
+            color: #df696e;
+            font-weight: bold;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .plus-one {
+            top: 100px;
+            right: 22%;
+            font-size: 105px;
+        }
+
+        .plus-two {
+            top: 280px;
+            right: 6%;
+            font-size: 65px;
+        }
+
+        .plus-three {
+            bottom: 130px;
+            right: 27%;
+            font-size: 115px;
+        }
+
+        /* BOTTOM WAVES */
+        .wave {
+            position: absolute;
+            left: -5%;
+            width: 110%;
+            height: 100px;
+            bottom: -35px;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(-2deg);
+        }
+
+        .wave-one {
+            background: #dc777c;
+            bottom: -45px;
+        }
+
+        .wave-two {
+            background: #ce6269;
+            bottom: -75px;
+            left: 15%;
+            transform: rotate(-5deg);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1000px) {
+            .header {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .navbar {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 22px;
+            }
+
+            .hero {
+                min-height: 650px;
+                padding: 65px 5% 110px;
+            }
+
+            .hero h1 {
+                font-size: clamp(40px, 7vw, 65px);
+            }
+
+            .plus-one {
+                right: 10%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo-section {
+                gap: 12px;
+            }
+
+            .university-logo {
+                width: 55px;
+                height: 55px;
+            }
+
+            .logo-divider {
+                height: 50px;
+            }
+
+            .medical-logo {
+                transform: scale(0.8);
+            }
+
+            .system-name h2 {
+                font-size: 16px;
+            }
+
+            .system-name p {
+                font-size: 11px;
+            }
+
+            .navbar {
+                gap: 16px;
+            }
+
+            .navbar a {
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 55px 22px 100px;
+                min-height: 700px;
+            }
+
+            .tagline {
+                font-size: 12px;
+                padding: 10px 16px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 15px 23px;
+                font-size: 14px;
+            }
+
+            .benefits {
+                gap: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .benefit {
+                font-size: 14px;
+            }
+
+            .plus-one {
+                top: 80px;
+                right: 3%;
+                font-size: 65px;
+            }
+
+            .plus-two {
+                top: 350px;
+                right: 3%;
+                font-size: 45px;
+            }
+
+            .plus-three {
+                bottom: 80px;
+                right: 5%;
+                font-size: 75px;
+            }
+        
+
+/* NAVIGATION */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+}
+
+.navbar button {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent !important;
+    color: white !important;
+    border: none !important;
+    border-bottom: 3px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.navbar button:hover {
+    color: #ffe0e0 !important;
+    border-bottom: 3px solid white !important;
+}
+
+@media (max-width: 1000px) {
+    .header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .navbar {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 22px;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        gap: 16px;
+    }
+
+    .navbar button {
+        font-size: 13px;
+    }
+}
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <div class="logo-section">
+
+            <!-- Keep TCU_logo_2024.png in the same folder as this HTML file -->
+            <img
+                src="TCU_logo_2024.png"
+                alt="Taguig City University Logo"
+                class="university-logo"
+            >
+
+            <div class="logo-divider"></div>
+
+            <div class="medical-logo"></div>
+
+            <div class="system-name">
+                <h2>TCU SMART CLINIC</h2>
+                <p>APPOINTMENT &amp; QUEUE SYSTEM</p>
+            </div>
+
+        </div>
+
+       
+
+
+<nav class="navbar">
+    <a href="website.html">Home</a>
+    <a href="about us.html">About Us</a>
+    <a href="services.html">Clinic Services</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="faqs.html">FAQs</a>
+</nav>
+
+
+
+        
+
+    </header>
+
+    <!-- LANDING PAGE -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="tagline">
+                    YOUR CAMPUS HEALTHCARE
+                </div>
+
+                <h1>
+                    Healthcare Made Easier<br>
+                    for the <span> TCU Students.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Book clinic appointments, receive your queue number,
+                    and monitor your appointment status in one convenient
+                    system.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="login.html" class="btn btn-primary">
+                        LOG IN
+                    </a>
+
+                    <a href="signup.html" class="btn btn-secondary">
+                        SIGN UP
+                    </a>
+                </div>
+
+                <div class="benefits">
+
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>Fast &amp; Convenient</span>
+                    </div>
+
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>Secure &amp; Confidential</span>
+                    </div>
+
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>For TCU Students Only</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Decorative medical crosses -->
+            <div class="plus plus-one">+</div>
+            <div class="plus plus-two">+</div>
+            <div class="plus plus-three">+</div>
+
+            <!-- Decorative waves -->
+            <div class="wave wave-one"></div>
+            <div class="wave wave-two"></div>
+
+        </section>
+
+        <!-- MISSION SECTION -->
+        <section id="mission" style="
+            padding: 70px 6%;
+            background: #fff1f1;
+            text-align: center;
+        ">
+            <h2 style="color: #bd191d; font-size: 32px; margin-bottom: 20px;">
+                Our Mission
+            </h2>
+
+            <p style="
+                max-width: 850px;
+                margin: auto;
+                font-size: 18px;
+                line-height: 1.8;
+            ">
+                To provide TCU students with a convenient and organized clinic appointment 
+                and queue management system that makes requesting appointments, checking queue
+                status, and accessing clinic services easier, faster, and more efficient.
+            </p>
+        </section>
+
+        <!-- VISION SECTION -->
+        <section id="vision" style="
+            padding: 70px 6%;
+            background: #f5c4c5;
+            text-align: center;
+        ">
+            <h2 style="color: #bd191d; font-size: 32px; margin-bottom: 20px;">
+                Our Vision
+            </h2>
+
+            <p style="
+                max-width: 850px;
+                margin: auto;
+                font-size: 18px;
+                line-height: 1.8;
+            ">
+               To become a reliable and user-friendly digital clinic system that 
+               improves healthcare accessibility for TCU students through efficient 
+               appointment scheduling and queue monitoring, helping create a healthier
+               and more comfortable campus environment.
+            </p>
+        </section>
+
+    </main>
+
+    
+
+<footer id="tcu-footer">
+    <p>© 2026 TCU Smart Clinic Appointment &amp; Queue System</p>
+    <p>Making campus healthcare more convenient for TCU Community.</p>
+</footer>
+
+<style>
+    #tcu-footer {
+        width: 100%;
+        min-height: 125px;
+        background-color: #bd191d;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 25px 15px;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #tcu-footer p {
+        color: white;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+        #tcu-footer p {
+            font-size: 12px;
+        }
+    }
+</style>
+</body>
+</html>
+
+ 
+
+
+
+</body>
+</html>

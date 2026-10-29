@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up | TCU Smart Clinic</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff1f1, #f5c4c7, #e98d93);
+    color: #260808;
+}
+
+header {
+    background: linear-gradient(90deg, #a80f18, #c91f2a);
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: white;
+    color: #b5121b;
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.brand h2 {
+    font-size: 19px;
+}
+
+.brand p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 11px 15px;
+    border-radius: 8px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.signup-container {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    max-width: 950px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 55px #6f0a142e;
+}
+
+.welcome-panel {
+    background: linear-gradient(150deg, #a80f18, #d52e3b, #e64a55);
+    color: white;
+    padding: 45px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome-symbol {
+    width: 75px;
+    height: 75px;
+    border-radius: 20px;
+    background: #ffffff26;
+    border: 1px solid #ffffff66;
+    display: grid;
+    place-items: center;
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+.welcome-panel h1 {
+    font-size: 34px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.welcome-panel p {
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.benefits {
+    list-style: none;
+    margin-top: 25px;
+}
+
+.benefits li {
+    margin: 17px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.check {
+    background: white;
+    color: #b5121b;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.form-panel {
+    padding: 40px;
+}
+
+.form-panel h2 {
+    color: #8f1118;
+    font-size: 29px;
+    margin-bottom: 10px;
+}
+
+.form-description {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #351313;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #e3caca;
+    border-radius: 10px;
+    background: #fffafa;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #c21c29;
+    box-shadow: 0 0 0 3px #c21c291a;
+}
+
+.password-note {
+    display: block;
+    color: #777;
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+.create-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #b5121b, #df3544);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.create-btn:hover {
+    background: #94111b;
+}
+
+.create-btn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+#formMessage {
+    display: none;
+    padding: 12px;
+    margin-top: 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+#formMessage.success {
+    display: block;
+    background: #e8f7ec;
+    color: #17652d;
+    border: 1px solid #b7e4c2;
+}
+
+#formMessage.error {
+    display: block;
+    background: #fff0f0;
+    color: #a5101b;
+    border: 1px solid #f0c2c2;
+}
+
+.login-prompt {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    margin-top: 22px;
+}
+
+.login-prompt a {
+    color: #b5121b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 18px;
+    color: #6d252a;
+    font-size: 12px;
+}
+
+@media (max-width: 750px) {
+    .signup-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .welcome-panel {
+        padding: 30px;
+    }
+
+    .form-panel {
+        padding: 30px 25px;
+    }
+}
+
+@media (max-width: 450px) {
+    header {
+        padding: 15px;
+    }
+
+    .brand h2 {
+        font-size: 14px;
+    }
+
+    .brand p {
+        font-size: 10px;
+    }
+
+    .brand-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .back-link {
+        font-size: 12px;
+        padding: 9px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <div class="brand-icon">✚</div>
+        <div>
+            <h2>TCU SMART CLINIC</h2>
+            <p>APPOINTMENT &amp; QUEUE SYSTEM</p>
+        </div>
+    </div>
+
+    <a href="website.html" class="back-link">← Home</a>
+</header>
+
+<main>
+<div class="signup-container">
+
+    <section class="welcome-panel">
+        <div class="welcome-symbol">✚</div>
+
+        <h1>Your Health,<br>Your Convenience.</h1>
+
+        <p>
+            Join the TCU Smart Clinic Appointment &amp; Queue System
+            and manage your campus clinic appointments more conveniently.
+        </p>
+
+        <ul class="benefits">
+            <li><span class="check">✓</span> Easy Appointment Booking</li>
+            <li><span class="check">✓</span> Convenient Queue Monitoring</li>
+            <li><span class="check">✓</span> Organized Clinic Information</li>
+        </ul>
+    </section>
+
+    <section class="form-panel">
+        <h2>Create Account</h2>
+
+        <p class="form-description">
+            Enter your details to create your clinic account.
+        </p>
+
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="studentName">Full Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="studentNumber">Student ID</label>
+                <input
+                    type="text"
+                    id="studentNumber"
+                    placeholder="e.g. 26-0011"
+                    autocomplete="off"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="studentEmail">Email Address</label>
+                <input
+                    type="email"
+                    id="studentEmail"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="studentPassword">Password</label>
+                    <input
+                        type="password"
+                        id="studentPassword"
+                        placeholder="Create password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required>
+                    <small class="password-note">At least 8 characters.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Repeat password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required>
+                </div>
+            </div>
+
+            <button type="submit" class="create-btn" id="createBtn">
+                CREATE ACCOUNT
+            </button>
+
+            <div id="formMessage" role="status" aria-live="polite"></div>
+
+            <p class="login-prompt">
+                Already have an account?
+                <a href="login.html">Log In</a>
+            </p>
+        </form>
+    </section>
+
+</div>
+</main>
+
+<footer>
+    &copy; 2026 TCU Smart Clinic Appointment &amp; Queue System.
+    All rights reserved.
+</footer>
+
+<script type="module">
+import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    updateProfile,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+// Your TCU Smart Clinic Firebase project.
+const firebaseConfig = {
+    apiKey: "AIzaSyDxijMAruXZOB1E-ZyAr69ZqBJJ1HqgcKM",
+    authDomain: "tcu-smart-clinic.firebaseapp.com",
+    projectId: "tcu-smart-clinic",
+    storageBucket: "tcu-smart-clinic.firebasestorage.app",
+    messagingSenderId: "702594747976",
+    appId: "1:702594747976:web:10771e4ce955031ee8d27d",
+    measurementId: "G-GQJN5CEPTC"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const form = document.getElementById("signupForm");
+const message = document.getElementById("formMessage");
+const button = document.getElementById("createBtn");
+
+function showMessage(text, type) {
+    message.textContent = text;
+    message.className = type;
+}
+
+form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("studentName").value.trim();
+    const studentNumber =
+        document.getElementById("studentNumber").value.trim();
+    const email =
+        document.getElementById("studentEmail").value.trim().toLowerCase();
+    const password =
+        document.getElementById("studentPassword").value;
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    message.textContent = "";
+    message.className = "";
+
+    if (!name || !studentNumber || !email || !password || !confirmPassword) {
+        showMessage("Please complete all fields.", "error");
+        return;
+    }
+
+    if (password.length < 8) {
+        showMessage("Your password must contain at least 8 characters.", "error");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        showMessage("Your passwords do not match.", "error");
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "CREATING ACCOUNT...";
+
+    let accountCreated = false;
+
+    try {
+        // Step 1: Create a Firebase Authentication account
+        // using the student's REAL email address.
+        const credential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        const user = credential.user;
+        accountCreated = true;
+
+        // Step 2: Save the student's name in their Auth profile.
+        await updateProfile(user, {
+            displayName: name
+        });
+
+        // Step 3: Save student information in Firestore.
+        await setDoc(doc(db, "users", user.uid), {
+            fullName: name,
+            studentNumber: studentNumber,
+            email: email,
+            createdAt: serverTimestamp()
+        });
+
+        // Step 4: Sign out so the student can log in normally.
+        await signOut(auth);
+
+        showMessage(
+            "Account created successfully! Your account is saved. Redirecting to login...",
+            "success"
+        );
+
+        button.textContent = "ACCOUNT CREATED";
+
+        setTimeout(function() {
+            window.location.href = "login.html";
+        }, 1500);
+
+    } catch (error) {
+        console.error("TCU sign-up error:", error);
+
+        if (accountCreated) {
+            showMessage(
+                "Firebase Authentication created your account, but saving the student profile failed. Do not register again with the same email. Check Firestore Database and its security rules. Details: " +
+                error.message,
+                "error"
+            );
+        } else if (error.code === "auth/email-already-in-use") {
+            showMessage(
+                "This email already has a Firebase account. Please log in with that account or use the password reset option.",
+                "error"
+            );
+        } else if (error.code === "auth/invalid-email") {
+            showMessage("Please enter a valid email address.", "error");
+        } else if (error.code === "auth/weak-password") {
+            showMessage("Please choose a stronger password.", "error");
+        } else if (error.code === "auth/operation-not-allowed") {
+            showMessage(
+                "Email/Password sign-in is disabled. Open Firebase Console → Authentication → Sign-in method and enable Email/Password.",
+                "error"
+            );
+        } else if (
+            error.code === "permission-denied" ||
+            error.code === "firestore/permission-denied"
+        ) {
+            showMessage(
+                "Firestore denied the request. Check your Firestore Database security rules.",
+                "error"
+            );
+        } else {
+            showMessage(
+                "Registration failed (" + (error.code || "unknown error") +
+                "): " + error.message,
+                "error"
+            );
+        }
+    } finally {
+        if (!accountCreated || message.className === "error") {
+            button.disabled = false;
+            button.textContent = "CREATE ACCOUNT";
+        }
+    }
+});
+</script>
+
+</body>
+</html>

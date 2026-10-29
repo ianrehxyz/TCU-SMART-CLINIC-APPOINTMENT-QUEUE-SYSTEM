@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | TCU Smart Clinic</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background: #fff0f0; color: #251515; }
+        header { background: #bd191d; color: white; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        nav { display: flex; flex-wrap: wrap; gap: 22px; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        main { max-width: 950px; margin: 60px auto; padding: 20px; }
+        .intro { text-align: center; margin-bottom: 35px; }
+        .intro h1 { font-size: 40px; margin: 15px 0; }
+        .intro span { color: #131111; }
+        .faq { background: white; padding: 22px; border-radius: 13px; margin-bottom: 15px; border: 1px solid #f0caca; box-shadow: 0 4px 12px #8c252510; }
+        summary { color: #a7191d; font-size: 17px; font-weight: bold; cursor: pointer; line-height: 1.6; }
+        .faq p { margin-top: 15px; line-height: 1.8; }
+        footer { background: #bd191d; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+        @media(max-width: 650px) { header { flex-direction: column; align-items: flex-start; } .intro h1 { font-size: 32px; } .faq { padding: 18px; } }
+    </style>
+</head>
+<body>
+<header>
+    <h2>✚ TCU SMART CLINIC</h2>
+    <nav>
+        <a href="website.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Clinic Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="faqs.html">FAQs</a>
+    </nav>
+</header>
+
+<main>
+    <div class="intro">
+        <p>WE ARE HERE TO HELP</p>
+        <h1>Frequently Asked <span>Questions</span></h1>
+        <p>Find answers to common questions about the TCU Smart Clinic system.</p>
+    </div>
+
+    <details class="faq">
+        <summary>Who can use the TCU Smart Clinic system?</summary>
+        <p>The system is intended for TCU students subject to the university's account access requirements.</p>
+    </details>
+
+    <details class="faq">
+        <summary>How do I request a clinic appointment?</summary>
+        <p>Sign up or log in, open the appointment form, enter the required information, and submit your request.</p>
+    </details>
+
+    <details class="faq">
+        <summary>Is my appointment automatically approved?</summary>
+        <p>No. Your request must be reviewed. Check your appointment status to see the clinic's decision.</p>
+    </details>
+
+    <details class="faq">
+        <summary>How can I get my queue number?</summary>
+        <p>Your queue number should be available after your appointment has been approved and the clinic has assigned a number.</p>
+    </details>
+
+    <details class="faq">
+        <summary>Can I monitor my appointment status?</summary>
+        <p>Yes, if the status feature is connected to the database, you can view the latest status of your request through your account.</p>
+    </details>
+
+    <details class="faq">
+        <summary>What should I do if I forget my password?</summary>
+        <p>Use the password recovery feature on the login page if it has been configured.</p>
+    </details>
+
+    <details class="faq">
+        <summary>Does the system replace the clinic's healthcare services?</summary>
+        <p>No. It helps manage appointments and queue information. Medical assessment and treatment are still provided by authorized clinic personnel.</p>
+    </details>
+</main>
+
+<footer>TCU Smart Clinic Appointment &amp; Queue System</footer>
+</body>
+</html>

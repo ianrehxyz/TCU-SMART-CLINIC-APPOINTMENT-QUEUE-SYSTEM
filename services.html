@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Services | TCU Smart Clinic</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background: #fff0f0; color: #251515; }
+        header { background: #bd191d; color: white; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        nav { display: flex; flex-wrap: wrap; gap: 22px; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        main { max-width: 1100px; margin: 60px auto; padding: 20px; }
+        .intro { text-align: center; margin-bottom: 40px; }
+        .intro h1 { font-size: 40px; margin: 15px 0; }
+        .intro h1 span { color: #bd191d; }
+        .intro p { line-height: 1.8; }
+        .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+        .card { background: white; padding: 30px; border-radius: 18px; border: 1px solid #f0caca; box-shadow: 0 6px 18px #8c25251a; }
+        .icon { font-size: 35px; margin-bottom: 15px; }
+        h2 { color: #bd191d; font-size: 22px; margin-bottom: 12px; }
+        .card p { line-height: 1.8; }
+        footer { background: #bd191d; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+        @media(max-width: 650px) { header { flex-direction: column; align-items: flex-start; } .grid { grid-template-columns: 1fr; } .intro h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+<header>
+    <h2>✚ TCU SMART CLINIC</h2>
+    <nav>
+        <a href="website.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Clinic Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="faqs.html">FAQs</a>
+    </nav>
+</header>
+
+<main>
+    <div class="intro">
+        <p>WHAT YOU CAN DO</p>
+        <h1>Our Clinic <span>Services</span></h1>
+        <p>Convenient clinic appointment and queue information for the TCU community.</p>
+    </div>
+
+    <div class="grid">
+        <div class="card">
+            <div class="icon">📅</div>
+            <h2>Appointment Requests</h2>
+            <p>Submit a request for a clinic visit using the online appointment form.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🎫</div>
+            <h2>Queue Number</h2>
+            <p>Check your assigned queue number once your request is approved and processed.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📋</div>
+            <h2>Appointment Status</h2>
+            <p>Review the status of your request, such as pending, approved, or declined.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🔔</div>
+            <h2>Appointment Updates</h2>
+            <p>Check for updates about your appointment and queue information through the system.</p>
+        </div>
+    </div>
+</main>
+
+<footer>TCU Smart Clinic Appointment &amp; Queue System</footer>
+</body>
+</html>

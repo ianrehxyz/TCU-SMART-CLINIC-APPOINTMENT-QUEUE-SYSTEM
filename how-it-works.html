@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works | TCU Smart Clinic</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background: #fff0f0; color: #251515; }
+        header { background: #bd191d; color: white; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        nav { display: flex; flex-wrap: wrap; gap: 22px; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        main { max-width: 1000px; margin: 60px auto; padding: 20px; }
+        .intro { text-align: center; margin-bottom: 40px; }
+        .intro h1 { font-size: 40px; margin: 15px 0; }
+        .intro span { color: #241d1d; }
+        .steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+        .step { background: white; padding: 30px; border-radius: 18px; border: 1px solid #f0caca; box-shadow: 0 6px 18px #8c25251a; }
+        .number { font-size: 38px; font-weight: bold; color: #bd191d; margin-bottom: 15px; }
+        h2 { color: #bd191d; margin-bottom: 12px; }
+        .step p { line-height: 1.8; }
+        .note { margin-top: 30px; background: #f8dada; padding: 22px; border-radius: 12px; line-height: 1.8; }
+        footer { background: #bd191d; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+        @media(max-width: 650px) { header { flex-direction: column; align-items: flex-start; } .steps { grid-template-columns: 1fr; } .intro h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+<header>
+    <h2>✚ TCU SMART CLINIC</h2>
+    <nav>
+        <a href="website.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Clinic Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="faqs.html">FAQs</a>
+    </nav>
+</header>
+
+<main>
+    <div class="intro">
+        <p>FOUR SIMPLE STEPS</p>
+        <h1>How It <span>Works</span></h1>
+        <p>Follow these steps to request and monitor a clinic appointment.</p>
+    </div>
+
+    <div class="steps">
+        <div class="step">
+            <div class="number">01</div>
+            <h2>Create an Account</h2>
+            <p>Register using the information required by the TCU Smart Clinic system.</p>
+        </div>
+        <div class="step">
+            <div class="number">02</div>
+            <h2>Log In</h2>
+            <p>Access your account using your registered login credentials.</p>
+        </div>
+        <div class="step">
+            <div class="number">03</div>
+            <h2>Request an Appointment</h2>
+            <p>Complete the appointment form, provide the required details, and submit your request.</p>
+        </div>
+        <div class="step">
+            <div class="number">04</div>
+            <h2>Check Your Status</h2>
+            <p>Monitor your request and check your queue number when it is assigned.</p>
+        </div>
+    </div>
+
+    <div class="note">
+        <strong>Remember:</strong> Submitting an appointment request does not automatically mean it is approved. Wait for the clinic's decision and check your status.
+    </div>
+</main>
+
+<footer>TCU Smart Clinic Appointment &amp; Queue System</footer>
+</body>
+</html>
